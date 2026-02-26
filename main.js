@@ -1,44 +1,30 @@
 const animations = [
-  {
-    id: "square",
-    label: "Square",
-    css: "animations/square.css",
-    html: `<div class="square"></div>`,
-  },
+  { label: "Square", css: "animations/square.css", html: `<div class="square"></div>` },
 ];
 
+const nav = document.getElementById("nav");
+const stage = document.getElementById("stage");
 let currentCSS = null;
 
-function loadAnimation(id) {
-  const anim = animations.find((a) => a.id === id);
-  if (!anim) return;
-
-  document.querySelectorAll(".nav-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.id === id);
-  });
+function load(item, btn) {
+  nav.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
+  btn.classList.add("active");
 
   if (currentCSS) currentCSS.remove();
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = anim.css;
-  document.head.appendChild(link);
-  currentCSS = link;
-
-  const stage = document.getElementById("stage");
-  stage.innerHTML = anim.html;
-}
-
-function buildNav() {
-  const nav = document.getElementById("nav");
-  animations.forEach((anim) => {
-    const btn = document.createElement("button");
-    btn.className = "nav-btn";
-    btn.dataset.id = anim.id;
-    btn.textContent = anim.label;
-    btn.addEventListener("click", () => loadAnimation(anim.id));
-    nav.appendChild(btn);
+  currentCSS = Object.assign(document.createElement("link"), {
+    rel: "stylesheet",
+    href: item.css,
   });
+  document.head.appendChild(currentCSS);
+  stage.innerHTML = item.html;
 }
 
-buildNav();
-loadAnimation(animations[0].id);
+animations.forEach((item) => {
+  const btn = document.createElement("button");
+  btn.className = "nav-btn";
+  btn.textContent = item.label;
+  btn.addEventListener("click", () => load(item, btn));
+  nav.appendChild(btn);
+});
+
+nav.querySelector(".nav-btn").click();
