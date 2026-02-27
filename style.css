@@ -34,8 +34,26 @@ header {
 
 nav {
   display: flex;
+  align-items: center;
   gap: 4px;
   flex: 1;
+}
+
+.nav-section {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #2e2e2e;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  padding: 0 4px;
+}
+
+.nav-divider {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  background: #222;
+  margin: 0 6px;
 }
 
 .nav-btn {
