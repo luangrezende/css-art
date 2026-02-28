@@ -1,0 +1,71 @@
+.painting-moon {
+  position: relative;
+  width: 640px;
+  height: 420px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+}
+
+.pm-sky {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+}
+
+.pm-sky::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow:
+    23px  82px white,   68px  11px rgba(255,255,255,0.5),
+    95px 190px white,  138px  44px white,  115px 330px rgba(255,255,255,0.4),
+    162px 310px rgba(255,255,255,0.4),  197px 135px white,  180px  70px white,
+    241px  29px white,  270px 265px rgba(255,255,255,0.5),  255px 380px white,
+    315px  72px white,  336px 165px rgba(255,255,255,0.4),  351px 340px white,
+    378px  40px white,  394px 155px rgba(255,255,255,0.4),  437px  18px white,
+    453px 290px rgba(255,255,255,0.5),  471px 250px white,  512px  88px rgba(255,255,255,0.5),
+    525px 360px white,  557px 195px white,  601px  50px white,
+    615px 140px rgba(255,255,255,0.4),  628px 310px rgba(255,255,255,0.4),
+    44px 170px 1px rgba(255,255,255,0.8),
+    247px  62px 1px rgba(255,255,255,0.75),
+    419px 285px 1px rgba(255,255,255,0.8),
+    589px 130px 1px rgba(255,255,255,0.75);
+}
+
+.pm-moon {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #b0b0b0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 20px 8px rgba(255, 255, 255, 0.3),
+    0 0 60px 20px rgba(200, 220, 255, 0.15);
+}
+
+.pm-holes-xl {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #a3a3a3;
+  top: 65%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.pm-holes-sm {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #838383;
+  top: 55%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+}

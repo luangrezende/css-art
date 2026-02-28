@@ -2,7 +2,8 @@ const catalog = [
   {
     section: "animations",
     items: [
-      { label: "Square", css: "animations/square.css", html: `<div class="square"></div>` },
+      { label: "Square", css: "animations/square/square.css", html: "animations/square/square.html" },
+      { label: "Cube", css: "animations/cube/cube.css", html: "animations/cube/cube.html" },
     ],
   },
   {
@@ -10,8 +11,13 @@ const catalog = [
     items: [
       {
         label: "Sunset",
-        css: "paintings/sunset.css",
-        html: `<div class="painting-sunset"><div class="ps-sky"></div><div class="ps-cloud ps-c1"></div><div class="ps-cloud ps-c2"></div><div class="ps-cloud ps-c3"></div><div class="ps-sun"></div><div class="ps-mountain-far"></div><div class="ps-mountain-near"></div><div class="ps-tree-line-l"></div><div class="ps-tree-line-r"></div><div class="ps-water"></div><div class="ps-ground"></div></div>`,
+        css: "paintings/sunset/sunset.css",
+        html: "paintings/sunset/sunset.html",
+      },
+      {
+        label: "Moon",
+        css: "paintings/moon/moon.css",
+        html: "paintings/moon/moon.html",
       },
     ],
   },
@@ -21,17 +27,16 @@ const nav = document.getElementById("nav");
 const stage = document.getElementById("stage");
 let currentCSS = null;
 
-function load(item, btn) {
+async function load(item, btn) {
   nav.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
   btn.classList.add("active");
 
   if (currentCSS) currentCSS.remove();
-  currentCSS = Object.assign(document.createElement("link"), {
-    rel: "stylesheet",
-    href: item.css,
-  });
+  currentCSS = document.createElement("link");
+  currentCSS.rel = "stylesheet";
+  currentCSS.href = item.css;
   document.head.appendChild(currentCSS);
-  stage.innerHTML = item.html;
+  stage.innerHTML = await fetch(item.html).then((r) => r.text());
 }
 
 catalog.forEach((section, i) => {
