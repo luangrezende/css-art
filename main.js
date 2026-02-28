@@ -1,12 +1,5 @@
 const catalog = [
   {
-    section: "animations",
-    items: [
-      { label: "Square", css: "animations/square/square.css", html: "animations/square/square.html" },
-      { label: "Cube", css: "animations/cube/cube.css", html: "animations/cube/cube.html" },
-    ],
-  },
-  {
     section: "paintings",
     items: [
       {
